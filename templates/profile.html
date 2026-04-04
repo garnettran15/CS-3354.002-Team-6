@@ -1,0 +1,63 @@
+<!-- Keerthan Sanjay -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FitAI | My Profile</title>
+    <style>
+        /* CSS SECTION: Centers the profile box on the screen. */
+        body { font-family: 'Segoe UI', sans-serif; background: #6B3A94; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .profile-card { background: white; padding: 40px; border-radius: 30px; width: 450px; }
+        label { display: block; font-size: 0.9rem; color: #666; margin-bottom: 5px; }
+        input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; margin-bottom: 20px; }
+        .btn { background: #6B3A94; color: white; border: none; padding: 15px; width: 100%; border-radius: 10px; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <h2>My Profile</h2>
+        
+        <label>Weight</label>
+        <input type="text" id="weight" value="{{ data.weight }}">
+
+        <label>Height</label>
+        <input type="text" id="height" value="{{ data.height }}">
+
+        <button class="btn" onclick="updateProfile()">Edit Profile</button>
+        <a href="/" style="display:block; text-align:center; margin-top:15px; color:#6B3A94; text-decoration:none;">Back to Dashboard</a>
+    </div>
+
+    <script>
+        // FUNCTION: updateProfile
+        // This script collects the text from the boxes and sends it to the server.
+        function updateProfile() {
+            const payload = {
+                weight: document.getElementById('weight').value,
+                height: document.getElementById('height').value
+            };
+
+            // Sends the data to the /api/update address in app.py.
+            fetch('/api/update', { 
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+                // Checks if the server sent back an error (like an empty box).
+                return response.json().then(data => {
+                    if (!response.ok) { throw new Error(data.message); }
+                    return data;
+                });
+            })
+            .then(data => {
+                // TEST CASE 1: Shows a success message if the data was saved.
+                alert(data.message); 
+            })
+            .catch(error => {
+                // TEST CASE 2: Shows an error message if the check failed.
+                alert(error.message); 
+            });
+        }
+    </script>
+</body>
+</html>

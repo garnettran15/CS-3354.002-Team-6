@@ -1,0 +1,34 @@
+<!-- Keerthan Sanjay -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FitAI | Dashboard</title>
+    <style>
+        /* CSS SECTION: Sets the colors, fonts, and box sizes. */
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; background: #E0E0E0; height: 100vh; }
+        .sidebar { width: 220px; background: #6B3A94; color: white; padding: 30px; display: flex; flex-direction: column; }
+        .nav-item { padding: 15px; cursor: pointer; border-radius: 8px; margin-bottom: 5px; text-decoration: none; color: white; opacity: 0.8; }
+        .main { flex-grow: 1; background: white; margin: 20px; border-radius: 25px; padding: 40px; }
+        .stats-grid { display: flex; gap: 25px; margin-top: 30px; }
+        .stat-card { border: 1px solid #eee; border-radius: 20px; padding: 25px; text-align: center; flex: 1; }
+        .circle { width: 90px; height: 90px; border: 8px solid #f0f0f0; border-top-color: #6B3A94; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Fit AI</h2>
+        <a href="/" class="nav-item">Dashboard</a>
+        <a href="/profile" class="nav-item">Profile Settings</a>
+    </div>
+
+    <div class="main">
+        <h1 style="color: #6B3A94;">Welcome Back, Alex!</h1>
+        <div class="stats-grid">
+            <div class="stat-card"><div class="circle" style="border-top-color: coral;">1,200</div><strong>Calories</strong></div>
+            <div class="stat-card"><div class="circle">85g</div><strong>Protein</strong></div>
+            <div class="stat-card"><div class="circle" style="border-top-color: orange;">150g</div><strong>Carbs</strong></div>
+        </div>
+    </div>
+</body>
+</html>
